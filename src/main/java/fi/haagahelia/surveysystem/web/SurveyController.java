@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import fi.haagahelia.surveysystem.domain.Survey;
 import fi.haagahelia.surveysystem.domain.SurveyRepository;
 
 import java.util.Optional;

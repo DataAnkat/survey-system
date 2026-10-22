@@ -28,5 +28,9 @@ public class Survey {
         this.questions = questions;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Survey [name=" + name + ", questions=" + questions + "]";
+    }
+        
 }
