@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kysely</title>
+</head>
+
+<body>
+
+    <h1>Kysely pohja</h1>
+
+    <input
+                type="text"
+                id="kysymys"
+                name="kysymys"
+                th:value="${kysely.kysymys}"
+                required
+        >
+    <button>Lisää kysymys</button>
+    
+    <!-- foreach kysymys -->
+
+    <button>Tallenna</button>
+
+</body>
+</html>
