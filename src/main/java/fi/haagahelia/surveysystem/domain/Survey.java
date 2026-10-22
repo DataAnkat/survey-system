@@ -17,6 +17,9 @@ public class Survey {
     private String name;
     private List<String> questions;
 
+    public Survey() {
+    }
+
     public Survey(String name, List<String> questions) {
         this.name = name;
         this.questions = questions;

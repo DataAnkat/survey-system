@@ -13,6 +13,11 @@
     <h1>Kysely</h1>
 
     <!-- foreach kysymys  -->
+     <tr th:each="survey : ${Surveys}">
+
+                <td th:text="${survey.name}"></td>
+
+            </tr>
 
     <button>Submit</button>
 
