@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kysely</title>
+</head>
+
+<body>
+
+    <h1>Kysely</h1>
+
+    <!-- foreach kysymys  -->
+
+    <table>
+        <tr th:each="survey : ${Surveys}">
+
+                <td th:text="${survey.name}"></td>
+                <td><button>KyselyNappi</button></td>
+                
+
+            </tr>
+    </table>
+     
+
+    <!-- <button>Luo kysely nappi</button> -->
+    <a class="btn btn-success" href="/createSurvey">Add</a>
+
+</body>
+</html>
