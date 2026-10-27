@@ -17,15 +17,13 @@
     <table>
         <tr th:each="survey : ${Surveys}">
 
-                <td th:text="${survey.name}"></td>
-                <td><button>KyselyNappi</button></td>
-                
-
-            </tr>
+            <td th:text="${survey.name}"></td>
+            <td><button>KyselyNappi</button></td>
+        </tr>
     </table>
      
 
     <button>Luo kysely nappi</button>
-
+    <a class="btn btn-success" href="/surveyList">Takaisin</a>
 </body>
 </html>

@@ -31,15 +31,20 @@ public class SurveyController {
     //model.addAttribute("Survey", new Survey("jotain",null));
         return "createSurvey";
     }
-    @RequestMapping ("/surveyList")
+    @RequestMapping ("/survey")
     public String survey(Model model) {
         model.addAttribute("Surveys", surveyRepository.findAll());
-        return "surveyList";
+        return "survey";
     }
     @RequestMapping ("/saveSurvey")
         public String saveSurvey(Survey survey){
         surveyRepository.save(survey);
         return "redirect:/survey";
+    }
+    @RequestMapping ("/surveyList")
+    public String surveyList(Model model) {
+        model.addAttribute("Surveys", surveyRepository.findAll());
+        return "surveyList";
     }
     
 }
