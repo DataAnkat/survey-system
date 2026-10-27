@@ -15,6 +15,8 @@ public class Survey {
     private Long id;
 
     private String name;
+    private String question;
+
     private List<String> questions;
 
     public Survey() {
@@ -32,6 +34,16 @@ public class Survey {
     public void setName(String name) {
         this.name = name;
     }
+
+        public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    
 
     public List<String> getQuestions() {
         return questions;
