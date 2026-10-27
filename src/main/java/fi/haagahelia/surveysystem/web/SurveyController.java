@@ -31,9 +31,12 @@ public class SurveyController {
     //model.addAttribute("Survey", new Survey("jotain",null));
         return "createSurvey";
     }
-    @RequestMapping ("/survey")
-    public String survey(Model model) {
-        model.addAttribute("Surveys", surveyRepository.findAll());
+    @RequestMapping ("/survey/{id}")
+    public String survey(@PathVariable Long id, Model model) {
+
+        Survey survey1 = surveyRepository.findById(id).orElseThrow();
+
+        model.addAttribute("survey", survey1);
         return "survey";
     }
     @RequestMapping ("/saveSurvey")

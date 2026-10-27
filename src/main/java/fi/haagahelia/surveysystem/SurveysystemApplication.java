@@ -36,6 +36,12 @@ public class SurveysystemApplication {
 
 			Survey survey2 = new Survey("Survey2", null);
 
+			questions.clear();
+
+			questions.add("Mikä lempielokuva?");
+			questions.add("Missä?");
+			questions.add("Mikä?");
+
 			survey2.setQuestions(questions);
 
 			surveyRepository.save(survey2);

@@ -18,7 +18,8 @@
         <tr th:each="survey : ${Surveys}">
 
                 <td th:text="${survey.name}"></td>
-                <td><button>KyselyNappi</button></td>
+                <td><a th:href="@{/survey/{id}(id=${survey.id})}">Get in here</a></td>
+                
                 
 
             </tr>
