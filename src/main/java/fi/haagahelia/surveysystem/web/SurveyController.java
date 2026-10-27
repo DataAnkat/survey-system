@@ -36,5 +36,10 @@ public class SurveyController {
         model.addAttribute("Surveys", surveyRepository.findAll());
         return "surveyList";
     }
+    @RequestMapping ("/saveSurvey")
+        public String saveSurvey(Survey survey){
+        surveyRepository.save(survey);
+        return "redirect:/survey";
+    }
     
 }
