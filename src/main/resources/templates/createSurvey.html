@@ -20,25 +20,26 @@
                 required
         > -->
 
+            <form th:action="@{/saveSurvey}" method="post">
+                <label>Kysymys: </label>
+                <input id="question" name="question" type="text"/>
+                <td><button type="submit">Tallenna</button></td>
+            </form>
     <table>
         <tr>
-            <form th:action="@(/saveSurvey)" method="post">
-                <label>Kysymys: </label>
-                <input type="text" />
-            </form>
-            <td><button>Lisää kysymys nappi</button></td>
-            
-        </tr>
 
-        <td><button>Tallenna nappi</button></td>
-        
-    
+        </tr>
+        <td><button>Lisää kysymys</button></td>
+
+
+
         <!-- foreach kysymys -->
 
-        
+
     </table>
-    
-    
+
+
 
 </body>
+
 </html>

@@ -35,7 +35,7 @@ public class Survey {
         this.name = name;
     }
 
-        public String getQuestion() {
+    public String getQuestion() {
         return question;
     }
 
@@ -43,7 +43,6 @@ public class Survey {
         this.question = question;
     }
 
-    
 
     public List<String> getQuestions() {
         return questions;
