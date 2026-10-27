@@ -43,14 +43,6 @@ public class Survey {
         this.question = question;
     }
 
-<<<<<<< HEAD
-=======
-    public Long getId(){
-        return this.id;
-    }
-
-    
->>>>>>> b13cc11 (get in here added)
 
     public List<String> getQuestions() {
         return questions;
