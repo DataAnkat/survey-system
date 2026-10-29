@@ -1,23 +1,15 @@
 package fi.haagahelia.surveysystem.web;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.ui.Model;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import fi.haagahelia.surveysystem.domain.Survey;
 import fi.haagahelia.surveysystem.domain.SurveyRepository;
 
-import java.util.Optional;
-
-import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-@Controller 
+@Controller
 public class SurveyController {
 
     private final SurveyRepository surveyRepository;
@@ -26,12 +18,12 @@ public class SurveyController {
         this.surveyRepository = surveyRepository;
     }
 
-     @RequestMapping("/createSurvey")
-    public String surveyString() {
-    //model.addAttribute("Survey", new Survey("jotain",null));
+    @GetMapping("/createSurvey")
+    public String createSurvey() {
         return "createSurvey";
     }
-    @RequestMapping ("/survey/{id}")
+
+    @GetMapping("/survey/{id}")
     public String survey(@PathVariable Long id, Model model) {
 
         Survey survey1 = surveyRepository.findById(id).orElseThrow();
@@ -39,15 +31,17 @@ public class SurveyController {
         model.addAttribute("survey", survey1);
         return "survey";
     }
-    @RequestMapping ("/saveSurvey")
-        public String saveSurvey(Survey survey){
-        surveyRepository.save(survey);
-        return "redirect:/survey";
+
+    @PostMapping("/saveSurvey")
+    public String saveSurvey(Survey survey) {
+        Survey savedSurvey = surveyRepository.save(survey);
+        return "redirect:/survey/" + savedSurvey.getId();
     }
-    @RequestMapping ("/surveyList")
+
+    @GetMapping("/surveyList")
     public String surveyList(Model model) {
         model.addAttribute("Surveys", surveyRepository.findAll());
         return "surveyList";
     }
-    
+
 }

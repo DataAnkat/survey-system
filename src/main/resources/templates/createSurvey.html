@@ -12,33 +12,32 @@
 
     <h1>Kyselypohja</h1>
 
-    <!-- <input
-                type="text"
-                id="kysymys"
-                name="kysymys"
-                th:value="${kysely.kysymys}"
-                required
-        > -->
+    <form th:action="@{/saveSurvey}" method="post">
+        <label for="name">Kyselyn nimi: </label>
+        <input id="name" name="name" type="text" required/>
 
-            <form th:action="@{/saveSurvey}" method="post">
-                <label>Kysymys: </label>
-                <input id="question" name="question" type="text"/>
-                <td><button type="submit">Tallenna</button></td>
-            </form>
-    <table>
-        <tr>
+        <table id="questions">
+            <tr>
+                <td><label>Kysymys: </label></td>
+                <td><input name="questions[0]" type="text" required/></td>
+            </tr>
+        </table>
 
-        </tr>
-        <td><button>Lisää kysymys</button></td>
+        <button type="button" onclick="addQuestion()">Lisää kysymys</button>
+        <button type="submit">Tallenna</button>
+    </form>
 
+    <a href="/surveyList">Takaisin</a>
 
-
-        <!-- foreach kysymys -->
-
-
-    </table>
-
-
+    <script>
+        function addQuestion() {
+            const table = document.getElementById("questions");
+            const index = table.rows.length;
+            const row = table.insertRow();
+            row.innerHTML = '<td><label>Kysymys: </label></td>'
+                + '<td><input name="questions[' + index + ']" type="text" required/></td>';
+        }
+    </script>
 
 </body>
 

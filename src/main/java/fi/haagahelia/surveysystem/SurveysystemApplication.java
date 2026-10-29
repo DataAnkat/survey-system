@@ -36,7 +36,7 @@ public class SurveysystemApplication {
 
 			Survey survey2 = new Survey("Survey2", null);
 
-			questions.clear();
+			questions = new ArrayList<String>();
 
 			questions.add("Mikä lempielokuva?");
 			questions.add("Missä?");

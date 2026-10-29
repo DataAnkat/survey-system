@@ -1,23 +1,26 @@
 package fi.haagahelia.surveysystem.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity 
+@Entity
 public class Survey {
 
-    @Id 
+    @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
-    private String question;
 
-    private List<String> questions;
+    //@ElementCollection (fetch = FetchType.EAGER)
+    private List<String> questions = new ArrayList<>();
 
     public Survey() {
     }
@@ -39,15 +42,6 @@ public class Survey {
         this.name = name;
     }
 
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-
     public List<String> getQuestions() {
         return questions;
     }
@@ -60,5 +54,5 @@ public class Survey {
     public String toString() {
         return "Survey [name=" + name + ", questions=" + questions + "]";
     }
-        
+
 }
