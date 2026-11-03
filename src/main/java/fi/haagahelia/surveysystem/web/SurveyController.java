@@ -17,12 +17,13 @@ public class SurveyController {
     SurveyController(SurveyRepository surveyRepository) {
         this.surveyRepository = surveyRepository;
     }
-
+    //Luodaan survey
     @GetMapping("/createSurvey")
     public String createSurvey() {
         return "createSurvey";
     }
 
+    //Haetaan survey id:n mukaan
     @GetMapping("/survey/{id}")
     public String survey(@PathVariable Long id, Model model) {
 
@@ -32,12 +33,13 @@ public class SurveyController {
         return "survey";
     }
 
+    //Tallennetaan survey
     @PostMapping("/saveSurvey")
     public String saveSurvey(Survey survey) {
         Survey savedSurvey = surveyRepository.save(survey);
         return "redirect:/survey/" + savedSurvey.getId();
     }
-
+    //Haetaan surveyt 
     @GetMapping("/surveyList")
     public String surveyList(Model model) {
         model.addAttribute("Surveys", surveyRepository.findAll());
