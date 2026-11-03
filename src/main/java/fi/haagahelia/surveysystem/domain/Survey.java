@@ -18,6 +18,7 @@ public class Survey {
     private Long id;
 
     private String name;
+    private String description;
 
     @ElementCollection (fetch = FetchType.EAGER)
     private List<String> questions = new ArrayList<>();
@@ -25,9 +26,18 @@ public class Survey {
     public Survey() {
     }
 
-    public Survey(String name, List<String> questions) {
+    public Survey(String name, List<String> questions, String description) {
         this.name = name;
         this.questions = questions;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getId() {

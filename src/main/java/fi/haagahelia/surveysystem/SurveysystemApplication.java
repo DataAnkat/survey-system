@@ -22,7 +22,7 @@ public class SurveysystemApplication {
 	public CommandLineRunner initRepository(SurveyRepository surveyRepository) {
 		return (args) -> {
 
-			Survey survey1 = new Survey("Survey1", null);
+			Survey survey1 = new Survey("Survey1", null, "Survey description");
 
 			ArrayList<String> questions = new ArrayList<String>();
 
@@ -34,7 +34,7 @@ public class SurveysystemApplication {
 
 			surveyRepository.save(survey1);
 
-			Survey survey2 = new Survey("Survey2", null);
+			Survey survey2 = new Survey("Survey2", null, "Survey description");
 
 			questions = new ArrayList<String>();
 
