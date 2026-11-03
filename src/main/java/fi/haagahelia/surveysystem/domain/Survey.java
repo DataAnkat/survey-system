@@ -19,7 +19,7 @@ public class Survey {
 
     private String name;
 
-    //@ElementCollection (fetch = FetchType.EAGER)
+    @ElementCollection (fetch = FetchType.EAGER)
     private List<String> questions = new ArrayList<>();
 
     public Survey() {

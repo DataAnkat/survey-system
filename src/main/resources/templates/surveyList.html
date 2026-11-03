@@ -10,15 +10,14 @@
 
 <body>
 
-    <h1>Kysely</h1>
+    <h1>Kyselyt</h1>
 
     <!-- foreach kysymys  -->
 
     <table>
         <tr th:each="survey : ${Surveys}">
 
-                <td th:text="${survey.name}"></td>
-                <td><a th:href="@{/survey/{id}(id=${survey.id})}">Get in here</a></td>
+                <td><a th:text="${survey.name}" th:href="@{/survey/{id}(id=${survey.id})}"></a></td>
                 
                 
 

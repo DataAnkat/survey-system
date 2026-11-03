@@ -13,13 +13,29 @@
     <h1>Kyselypohja</h1>
 
     <form th:action="@{/saveSurvey}" method="post">
-        <label for="name">Kyselyn nimi: </label>
-        <input id="name" name="name" type="text" required/>
+        
+        
+        <table>
+            <tr>
+                <td><label for="name">Kyselyn nimi: </label></td>
+            <td><input size="100" id="name" name="name" type="text" required/></td>
+            </tr>
+
+        <tr>
+            
+
+            <td><label for="kuvaus">Kuvaus: </label></td>
+            <td><input size="100" id="name" name="name" type="text" required/></td>
+        </tr>
+
+        </table>
+        
 
         <table id="questions">
             <tr>
                 <td><label>Kysymys: </label></td>
-                <td><input name="questions[0]" type="text" required/></td>
+                <td><input size="100" name="questions[0]" type="text" required/></td>
+                
             </tr>
         </table>
 
