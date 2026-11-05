@@ -23,7 +23,7 @@
 
             <tr>
                 <td><label for="kuvaus">Kuvaus: </label></td>
-                <td><input size="100" id="name" name="name" type="text" required/></td>
+                <td><input size="100" id="description" name="description" type="text" required/></td>
             </tr>
 
         </table>
@@ -49,7 +49,7 @@
             const index = table.rows.length;
             const row = table.insertRow();
             row.innerHTML = '<td><label>Kysymys: </label></td>'
-                + '<td><input name="questions[' + index + ']" type="text" required/></td>';
+                + '<td><input size="100" name="questions[' + index + ']" type="text" required/></td>';
         }
     </script>
 

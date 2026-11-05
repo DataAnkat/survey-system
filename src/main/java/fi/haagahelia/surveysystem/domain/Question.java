@@ -18,7 +18,6 @@ public class Question {
     private Long id;
 
     private String question;
-    private String description;
     private Long surveyId;
     private type type;
 
@@ -36,14 +35,6 @@ public class Question {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Long getSurveyId() {
