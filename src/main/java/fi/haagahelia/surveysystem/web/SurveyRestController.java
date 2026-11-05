@@ -1,24 +1,32 @@
 package fi.haagahelia.surveysystem.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fi.haagahelia.surveysystem.domain.SurveyRepository;
 import fi.haagahelia.surveysystem.domain.Survey;
 
 
-
 @RestController 
-
 public class SurveyRestController {
     private final SurveyRepository surveyRepository;
 
-    SurveyRestContoller(SurveyRepository surveyRepository) {
+    public SurveyRestController(SurveyRepository surveyRepository) {
         this.surveyRepository = surveyRepository;
-    @GetMapping("/api/surveys")
-    public List<Survey> findsurveys(){
-        return SurveyRepository.findAll();
+    }
+
+    @RequestMapping("/api/surveys")
+    public List<Survey> findSurveys(){
+        return surveyRepository.findAll();
+    }
+
+    @RequestMapping("/api/survey/{id}")
+    public Optional<Survey> findSurvey(@PathVariable("id") Long surveyId) {
+        return surveyRepository.findById(surveyId);
     }
 }
