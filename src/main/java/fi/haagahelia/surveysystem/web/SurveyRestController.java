@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import fi.haagahelia.surveysystem.domain.SurveyRepository;
 import fi.haagahelia.surveysystem.domain.Survey;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController 
 public class SurveyRestController {
     private final SurveyRepository surveyRepository;

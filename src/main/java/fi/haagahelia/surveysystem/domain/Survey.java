@@ -20,6 +20,8 @@ public class Survey {
     private String name;
     private String description;
 
+    // joskus luojan nimi variable tänne ehk... i guess
+
     @ElementCollection (fetch = FetchType.EAGER)
     private List<String> questions = new ArrayList<>();
 
