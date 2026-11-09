@@ -20,7 +20,9 @@
             <td th:text="${question}"></td>
         </tr>
     </table>
-     
+    <!-- New Edit Button-->
+     <a class="btn btn-primary" th:href="@{/editSurvey/{id}(id=${survey.id})}">Muokkaa</a>
+
     <a class="btn btn-success" href="/surveyList">Takaisin</a>
 </body>
 </html>

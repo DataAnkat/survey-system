@@ -4,8 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Kysely</title>
+    <title>Uusi Kysely</title>
+    
+    <style>
+        textarea {
+            width: 100%;
+            min-width: 400px;
+            min-height: 30px;
+            box-sizing: border-box;
+            overflow: hidden;
+            resize: none;
+            font-family: inherit;
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,42 +26,45 @@
 
     <form th:action="@{/saveSurvey}" method="post">
         
-        
         <table>
             <tr>
                 <td><label for="name">Kyselyn nimi: </label></td>
-                <td><input size="100" id="name" name="name" type="text" required/></td>
+                <td><textarea id="name" name="name" oninput="autoResize(this)" required></textarea></td>
             </tr>
 
             <tr>
-                <td><label for="kuvaus">Kuvaus: </label></td>
-                <td><input size="100" id="description" name="description" type="text" required/></td>
+                <td><label for="description">Kuvaus: </label></td>
+                <td><textarea id="description" name="description" oninput="autoResize(this)" required></textarea></td>
             </tr>
-
         </table>
         
-
         <table id="questions">
             <tr>
                 <td><label>Kysymys: </label></td>
-                <td><input size="100" name="questions[0]" type="text" required/></td>
-                
+                <td><textarea name="questions[0]" oninput="autoResize(this)" required></textarea></td>
             </tr>
         </table>
 
+        <br>
         <button type="button" onclick="addQuestion()">Lisää kysymys</button>
         <button type="submit">Tallenna</button>
     </form>
 
-    <a href="/surveyList">Takaisin</a>
+    <br>
+    <a class="btn btn-secondary" href="/surveyList">Takaisin</a>
 
     <script>
+        function autoResize(element) {
+            element.style.height = 'auto';
+            element.style.height = element.scrollHeight + 'px';
+        }
+
         function addQuestion() {
             const table = document.getElementById("questions");
             const index = table.rows.length;
             const row = table.insertRow();
             row.innerHTML = '<td><label>Kysymys: </label></td>'
-                + '<td><input size="100" name="questions[' + index + ']" type="text" required/></td>';
+                + '<td><textarea name="questions[' + index + ']" oninput="autoResize(this)" required></textarea></td>';
         }
     </script>
 
