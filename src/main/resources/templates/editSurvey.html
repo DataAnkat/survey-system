@@ -37,7 +37,7 @@
 
             <tr>
                 <td><label for="description">Kuvaus: </label></td>
-                <td><textarea id="description" th:field="*{description}" oninput="autoResize(this)" required></textarea></td>
+                <td><textarea id="description" th:field="*{description}" oninput="autoResize(this)" maxlength="2000" required></textarea></td>
             </tr>
 
         </table>
@@ -45,7 +45,7 @@
         <table id="questions">
             <tr th:each="question, stat : *{questions}">
                 <td><label>Kysymys: </label></td>
-                <td><textarea th:field="*{questions[__${stat.index}__]}" oninput="autoResize(this)" required></textarea></td>
+                <td><textarea th:field="*{questions[__${stat.index}__]}" oninput="autoResize(this)" maxlength="200" required></textarea></td>
             </tr>
         </table>
 

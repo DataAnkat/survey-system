@@ -3,6 +3,7 @@ package fi.haagahelia.surveysystem.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,6 +19,8 @@ public class Survey {
     private Long id;
 
     private String name;
+
+    @Column(length = 10000)
     private String description;
 
     // joskus luojan nimi variable tänne ehk... i guess
