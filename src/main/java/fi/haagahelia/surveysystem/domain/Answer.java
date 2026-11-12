@@ -23,9 +23,13 @@ public class Answer {
     private Long id;
 
     private Long surveyId;
-    private type type;
-    @ElementCollection (fetch = FetchType.EAGER)
-    private List<String> answer = new ArrayList <> ();
+    private Type type;
+    private String answer;
+
+    public Answer(Long surveyId, String answer){
+        this.surveyId = surveyId;
+        this.answer = answer;
+    }
 
     public Long getId() {
         return id;
@@ -39,16 +43,16 @@ public class Answer {
     public void setSurveyId(Long surveyId) {
         this.surveyId = surveyId;
     }
-    public type getType() {
+    public Type getType() {
         return type;
     }
-    public void setType(type type) {
+    public void setType(Type type) {
         this.type = type;
     }
-    public List<String> getAnswer() {
+    public String getAnswer() {
         return answer;
     }
-    public void setAnswer(List<String> answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 }   

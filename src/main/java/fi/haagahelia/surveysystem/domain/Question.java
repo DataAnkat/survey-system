@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-enum type {
+enum Type {
     TEXT,
     CHECKBOX_MULTIPLE_CHOICE,
     RADIOHEAD_MULTIPLE_CHOICE,
@@ -19,7 +19,7 @@ public class Question {
 
     private String question;
     private Long surveyId;
-    private type type;
+    private Type type;
 
     public String getQuestion() {
         return question;
@@ -45,11 +45,11 @@ public class Question {
         this.surveyId = surveyId;
     }
 
-    public type getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(type type) {
+    public void setType(Type type) {
         this.type = type;
     }
 }

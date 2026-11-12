@@ -34,9 +34,6 @@ public class SurveyRestController {
         return surveyRepository.findById(surveyId);
     }
 
-    @PostMapping("/api/answer/{id}")
-    public String addAnswer (@RequestBody String answer) {
-        return answer;
-    }
+    
 
 }
