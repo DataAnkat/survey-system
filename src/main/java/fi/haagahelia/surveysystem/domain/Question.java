@@ -18,7 +18,7 @@ public class Question {
     private Long id;
 
     private String question;
-    private Long surveyId;
+    private Long surveyId; //Survey survey instead of Long surveyId (Same as Book - Category)
     private Type type;
 
     public String getQuestion() {
