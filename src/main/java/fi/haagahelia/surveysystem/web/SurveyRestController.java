@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,4 +33,10 @@ public class SurveyRestController {
     public Optional<Survey> findSurvey(@PathVariable("id") Long surveyId) {
         return surveyRepository.findById(surveyId);
     }
+
+    @PostMapping("/api/answer/{id}")
+    public String addAnswer (@RequestBody String answer) {
+        return answer;
+    }
+
 }
