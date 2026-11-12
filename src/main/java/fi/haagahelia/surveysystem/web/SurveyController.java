@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fi.haagahelia.surveysystem.domain.Survey;
 import fi.haagahelia.surveysystem.domain.SurveyRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class SurveyController {
@@ -67,5 +71,11 @@ public class SurveyController {
         surveyRepository.deleteById(id);
         return "redirect:/surveyList";
     }
+
+    @RequestMapping("/")
+    public String index() {
+        return "redirect:/surveyList";
+    }
+    
 
 }
