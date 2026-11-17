@@ -47,6 +47,18 @@ public class SurveysystemApplication {
 			surveyRepository.save(survey2);
 
 
+			Survey survey3 = new Survey("Palautekysely", null,"Tämä kysely on kohdistettu Haaga-Helian opisikelijoille. Palautetta pyydetään opettajien toimintavoista kurssien aikana ja toivotaan, että opiskelijat ilmiantavat epäoikeudenmukaisen käytöksen, mikäli sellaista havaitaan. Palautteet kerätään, jotta voidaan ottaa tarpeenmukaiset toimenpiteet käyttöön opettajan toimintatapojen parantamiseksi.");
+
+			questions = new ArrayList<String>();
+
+			questions.add("Opettajan nimi");
+			questions.add("Kurssitoteutus");
+			questions.add("Kerro opettajan toimintatavoista kurssin aikana");
+			questions.add("Jos kurssin aikana ilmeni epäoikeudenmukaista käytöstä, kirjaa se tähän.");
+
+			survey3.setQuestions(questions);
+
+			surveyRepository.save(survey3);
 		};	
 	}
 

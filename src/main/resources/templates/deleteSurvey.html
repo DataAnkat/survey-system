@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poista Kysely</title>
+</head>
+
+<body>
+
+    <h1>Vahvista kyselyn poisto</h1>
+
+    <p>Oletko varma, että haluat poistaa seuraavan kyselyn?</p>
+
+    <table>
+        <tr>
+            <td><strong>Nimi:</strong></td>
+            <td th:text="${survey.name}"></td>
+        </tr>
+        <tr>
+            <td><strong>Kuvaus:</strong></td>
+            <td th:text="${survey.description}"></td>
+        </tr>
+    </table>
+
+    <br>
+
+    <form th:action="@{/deleteSurvey/{id}(id=${survey.id})}" method="post">
+        <button type="submit">Kyllä, poista</button>
+        <a class="btn btn-secondary" th:href="@{/surveyList}">Peruuta</a>
+    </form>
+
+</body>
+
+</html>

@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fi.haagahelia.surveysystem.domain.Survey;
 import fi.haagahelia.surveysystem.domain.SurveyRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class SurveyController {
@@ -39,11 +43,39 @@ public class SurveyController {
         Survey savedSurvey = surveyRepository.save(survey);
         return "redirect:/survey/" + savedSurvey.getId();
     }
+
     //Haetaan surveyt 
     @GetMapping("/surveyList")
     public String surveyList(Model model) {
         model.addAttribute("Surveys", surveyRepository.findAll());
         return "surveyList";
     }
+    
+    // Muokataan surveyta id:n mukaan
+    @GetMapping("/editSurvey/{id}")
+    public String editSurvey(@PathVariable("id") Long id, Model model) {
+        Survey surveyToEdit = surveyRepository.findById(id).orElseThrow();
+        model.addAttribute("survey", surveyToEdit);
+        return "editSurvey"; 
+    }
+
+    @GetMapping("/deleteSurvey/{id}")
+    public String confirmDelete(@PathVariable("id") Long id, Model model) {
+        Survey surveyToDelete = surveyRepository.findById(id).orElseThrow();
+        model.addAttribute("survey", surveyToDelete);
+        return "deleteSurvey";
+    }
+
+    @PostMapping("/deleteSurvey/{id}")
+    public String deleteSurvey(@PathVariable("id") Long id) {
+        surveyRepository.deleteById(id);
+        return "redirect:/surveyList";
+    }
+
+    @RequestMapping("/")
+    public String index() {
+        return "redirect:/surveyList";
+    }
+    
 
 }

@@ -17,6 +17,10 @@
     <table>
         <tr th:each="survey : ${Surveys}">
             <td><a th:text="${survey.name}" th:href="@{/survey/{id}(id=${survey.id})}"></a></td>
+            <!-- New Edit Button-->
+            <td><a th:href="@{/editSurvey/{id}(id=${survey.id})}">Muokkaa</a></td>
+            <!-- New Delete Button-->
+            <td><a th:href="@{/deleteSurvey/{id}(id=${survey.id})}">Poista</a></td>
         </tr>
     </table>
      
