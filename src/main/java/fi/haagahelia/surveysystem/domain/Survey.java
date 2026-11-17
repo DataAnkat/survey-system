@@ -28,7 +28,8 @@ public class Survey {
     @ElementCollection (fetch = FetchType.EAGER)
     private List<String> questions = new ArrayList<>();
 
-    public Survey() {
+    public Survey(){
+        
     }
 
     public Survey(String name, List<String> questions, String description) {

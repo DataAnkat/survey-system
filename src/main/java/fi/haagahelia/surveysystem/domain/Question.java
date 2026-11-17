@@ -3,6 +3,8 @@ package fi.haagahelia.surveysystem.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 enum Type {
     TEXT,
@@ -18,8 +20,21 @@ public class Question {
     private Long id;
 
     private String question;
-    private Long surveyId; //Survey survey instead of Long surveyId (Same as Book - Category)
+
+    @ManyToOne
+    @JoinColumn(name = "survey_id")
+    private Survey survey;
     private Type type;
+
+    public Question() {
+        
+    }
+
+    public Question(String question, Survey survey, Type type) {
+        this.question = question;
+        this.survey = survey;
+        this.type = type;
+    }
 
     public String getQuestion() {
         return question;
@@ -37,12 +52,12 @@ public class Question {
         this.id = id;
     }
 
-    public Long getSurveyId() {
-        return surveyId;
+    public Survey getSurvey() {
+        return survey;
     }
 
-    public void setSurveyId(Long surveyId) {
-        this.surveyId = surveyId;
+    public void setSurveyId(Survey survey) {
+        this.survey = survey;
     }
 
     public Type getType() {
