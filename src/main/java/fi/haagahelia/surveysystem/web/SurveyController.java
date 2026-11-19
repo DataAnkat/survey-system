@@ -76,6 +76,15 @@ public class SurveyController {
     public String index() {
         return "redirect:/surveyList";
     }
+
+    @PostMapping("/deleteQuestion/{id}/{index}")
+    public String deleteQuestion(@PathVariable("id") Long surveyId, @PathVariable("index") int index) {
+        Survey survey = surveyRepository.findById(surveyId).orElseThrow();
+        survey.getQuestions().remove(index);
+        surveyRepository.save(survey);
+        return "redirect:/editSurvey/" + surveyId;
+    }
+
     
 
 }

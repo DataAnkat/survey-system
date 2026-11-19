@@ -46,6 +46,14 @@
             <tr th:each="question, stat : *{questions}">
                 <td><label>Kysymys: </label></td>
                 <td><textarea th:field="*{questions[__${stat.index}__]}" oninput="autoResize(this)" maxlength="200" required></textarea></td>
+
+                <td>
+                    <button type="submit"
+                            th:attr="formaction=@{/deleteQuestion/{id}/{index}(id=${survey.id},index=${stat.index})}"
+                            formmethod="post"
+                            formnovalidate>Poista kysymys</button>
+                </td>
+
             </tr>
         </table>
 
