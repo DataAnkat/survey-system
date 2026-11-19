@@ -27,7 +27,7 @@ public class Question {
     private Type type;
 
     public Question() {
-        
+
     }
 
     public Question(String question, Survey survey, Type type) {
@@ -56,7 +56,7 @@ public class Question {
         return survey;
     }
 
-    public void setSurveyId(Survey survey) {
+    public void setSurvey(Survey survey) {
         this.survey = survey;
     }
 

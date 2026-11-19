@@ -16,8 +16,8 @@
     <!-- foreach kysymys  -->
 
     <ol>
-        <li th:each="question : ${survey.questions}">
-            <td th:text="${question}"></td>
+        <li th:each="question : ${questions}">
+            <td th:text="${question.question}"></td>
         </li>
     </ol>
     <!-- New Edit Button-->

@@ -8,6 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import fi.haagahelia.surveysystem.domain.AnswerRepository;
+import fi.haagahelia.surveysystem.domain.Question;
+import fi.haagahelia.surveysystem.domain.QuestionRepository;
 import fi.haagahelia.surveysystem.domain.Survey;
 import fi.haagahelia.surveysystem.domain.SurveyRepository;
 
@@ -19,46 +22,30 @@ public class SurveysystemApplication {
 	}
 
 	@Bean 
-	public CommandLineRunner initRepository(SurveyRepository surveyRepository) {
+	public CommandLineRunner initRepository(SurveyRepository surveyRepository, QuestionRepository questionRepository, AnswerRepository answerRepository) {
 		return (args) -> {
 
-			Survey survey1 = new Survey("Survey1", null, "Survey description");
+			// kys 1
+			Survey survey1 = new Survey("Survey1", "Survey description");
 
-			ArrayList<String> questions = new ArrayList<String>();
-
-			questions.add("Mikä nimi on?");
-			questions.add("Mikä on kello?");
-			questions.add("Mikä on päivä?");
-
-			survey1.setQuestions(questions);
+			Question question1 = new Question("Mikä nimesi on?", survey1, null);
 
 			surveyRepository.save(survey1);
+			questionRepository.save(question1);
 
-			Survey survey2 = new Survey("Survey2", null, "Survey description");
-
-			questions = new ArrayList<String>();
-
-			questions.add("Mikä lempielokuva?");
-			questions.add("Missä?");
-			questions.add("Mikä?");
-
-			survey2.setQuestions(questions);
+			// kys 2
+			Survey survey2 = new Survey("Survey2", "Survey description");
+			Question question2 = new Question("Mikä päivä on?", survey2, null);
 
 			surveyRepository.save(survey2);
+			questionRepository.save(question2);
 
-
-			Survey survey3 = new Survey("Palautekysely", null,"Tämä kysely on kohdistettu Haaga-Helian opisikelijoille. Palautetta pyydetään opettajien toimintavoista kurssien aikana ja toivotaan, että opiskelijat ilmiantavat epäoikeudenmukaisen käytöksen, mikäli sellaista havaitaan. Palautteet kerätään, jotta voidaan ottaa tarpeenmukaiset toimenpiteet käyttöön opettajan toimintatapojen parantamiseksi.");
-
-			questions = new ArrayList<String>();
-
-			questions.add("Opettajan nimi");
-			questions.add("Kurssitoteutus");
-			questions.add("Kerro opettajan toimintatavoista kurssin aikana");
-			questions.add("Jos kurssin aikana ilmeni epäoikeudenmukaista käytöstä, kirjaa se tähän.");
-
-			survey3.setQuestions(questions);
+			// kys 3
+			Survey survey3 = new Survey("Palautekysely", "Tämä kysely on kohdistettu Haaga-Helian opisikelijoille. Palautetta pyydetään opettajien toimintavoista kurssien aikana ja toivotaan, että opiskelijat ilmiantavat epäoikeudenmukaisen käytöksen, mikäli sellaista havaitaan. Palautteet kerätään, jotta voidaan ottaa tarpeenmukaiset toimenpiteet käyttöön opettajan toimintatapojen parantamiseksi.");
+			Question question3 = new Question("Onko tämä kolmas kysely?", survey3, null);
 
 			surveyRepository.save(survey3);
+			questionRepository.save(question3);
 		};	
 	}
 

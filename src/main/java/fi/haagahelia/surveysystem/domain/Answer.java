@@ -1,11 +1,6 @@
 package fi.haagahelia.surveysystem.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -25,18 +20,18 @@ public class Answer {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "survey_id")
-    private Survey survey;
+    @JoinColumn(name = "question_id")
+    private Question question; // muuta -> Question
 
     private Type type;
     private String answer;
 
     public Answer(){
-        
+
     }
 
-    public Answer(Survey survey, String answer){
-        this.survey = survey;
+    public Answer(Question question, String answer){
+        this.question = question;
         this.answer = answer;
     }
 
@@ -46,11 +41,11 @@ public class Answer {
     public void setId(Long id) {
         this.id = id;
     }
-    public Survey getSurvey() {
-        return survey;
+    public Question getQuestion() {
+        return question;
     }
-    public void setSurvey(Survey survey) {
-        this.survey = survey;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
     public Type getType() {
         return type;

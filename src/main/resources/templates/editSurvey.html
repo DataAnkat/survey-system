@@ -43,17 +43,16 @@
         </table>
         
         <table id="questions">
-            <tr th:each="question, stat : *{questions}">
+            <tr th:each="question : ${questions}">
                 <td><label>Kysymys: </label></td>
-                <td><textarea th:field="*{questions[__${stat.index}__]}" oninput="autoResize(this)" maxlength="200" required></textarea></td>
+                <td><textarea th:text="${question.question}" oninput="autoResize(this)" maxlength="200" required></textarea></td>
 
                 <td>
                     <button type="submit"
-                            th:attr="formaction=@{/deleteQuestion/{id}/{index}(id=${survey.id},index=${stat.index})}"
+                            th:attr="formaction=@{/deleteQuestion/{surveyId}/{questionId}(surveyId=${survey.id},questionId=${question.id})}"
                             formmethod="post"
                             formnovalidate>Poista kysymys</button>
                 </td>
-
             </tr>
         </table>
 
@@ -79,10 +78,9 @@
 
         function addQuestion() {
             const table = document.getElementById("questions");
-            const index = table.rows.length;
             const row = table.insertRow();
             row.innerHTML = '<td><label>Kysymys: </label></td>'
-                + '<td><textarea name="questions[' + index + ']" oninput="autoResize(this)" required></textarea></td>';
+        + '<textarea name="questionTexts" oninput="autoResize(this)" maxlength="200" required></textarea></td>';
         }
     </script>
 

@@ -15,7 +15,8 @@ import fi.haagahelia.surveysystem.domain.Survey;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173", "https://survey-system-git-quest-project.2.rahtiapp.fi"})
+
 @RestController 
 public class SurveyRestController {
     private final SurveyRepository surveyRepository;

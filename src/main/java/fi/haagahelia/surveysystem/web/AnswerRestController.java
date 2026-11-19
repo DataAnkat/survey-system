@@ -1,5 +1,6 @@
 package fi.haagahelia.surveysystem.web;
 
+import fi.haagahelia.surveysystem.domain.QuestionRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,6 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import fi.haagahelia.surveysystem.domain.Answer;
 import fi.haagahelia.surveysystem.domain.AnswerRepository;
+import fi.haagahelia.surveysystem.domain.Question;
 import fi.haagahelia.surveysystem.domain.Survey;
 import fi.haagahelia.surveysystem.domain.SurveyRepository;
 
@@ -22,20 +24,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 public class AnswerRestController {
 
+    private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
-    private final SurveyRepository surveyRepository;
 
-    public AnswerRestController(AnswerRepository answerRepository, SurveyRepository surveyRepository) {
+    public AnswerRestController(AnswerRepository answerRepository, QuestionRepository questionRepository) {
         this.answerRepository = answerRepository;
-        this.surveyRepository = surveyRepository;
+        this.questionRepository = questionRepository;;
     }
 
     @PostMapping("/api/answer/{id}")
     public String addAnswer (@PathVariable Long id, @RequestBody String answer) {
 
-        Survey survey = surveyRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found"));
+        Question _question = questionRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found"));
 
-        Answer newAnswer = new Answer(survey, answer);
+        Answer newAnswer = new Answer(_question, answer);
 
         answerRepository.save(newAnswer);
 
