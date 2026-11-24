@@ -55,7 +55,8 @@ public class AnswerRestController {
         return answerRepository.findAll();
     }
     
-
+    // löydä kaikki vastaukset tällä tietyllä kysymys id:llä
+    // useampi vastaus yhteen kysymykseen
     @RequestMapping("/api/answer/{id}")
     public Answer getAnswerById(@PathVariable("id") Long id) {
         return answerRepository.findByQuestionId(id);
