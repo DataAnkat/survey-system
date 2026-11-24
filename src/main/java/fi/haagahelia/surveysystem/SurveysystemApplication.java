@@ -29,8 +29,10 @@ public class SurveysystemApplication {
 			Survey survey1 = new Survey("Survey1", "Survey description");
 
 			Question question1 = new Question("Mikä nimesi on?", survey1, null);
+			Question question1_2 = new Question("Mikä?", survey1, null);
 
 			surveyRepository.save(survey1);
+			questionRepository.save(question1_2);
 			questionRepository.save(question1);
 
 			// kys 2
