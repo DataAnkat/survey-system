@@ -19,6 +19,12 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -32,7 +38,7 @@ public class AnswerRestController {
         this.questionRepository = questionRepository;;
     }
 
-    @PostMapping("/api/answer/{id}")
+    @PostMapping("/api/answer/{id}") //Tallennus, joka ei kuulema toimi t. TK
     public String addAnswer (@PathVariable Long id, @RequestBody String answer) {
 
         Question _question = questionRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found"));
@@ -43,4 +49,12 @@ public class AnswerRestController {
 
         return "Answer id: " + id + "Added to repo";
     }
+
+    @GetMapping("/api/answers/{id}")
+    public String getAnswersById() {
+        return new String();
+    }
+    
+
+    
 }
