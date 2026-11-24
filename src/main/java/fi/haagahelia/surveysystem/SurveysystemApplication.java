@@ -34,6 +34,7 @@ public class SurveysystemApplication {
 			
 			Answer answer1 = new Answer(question1, "En tiiä mikä");
 			Answer answer1_2 = new Answer(question1_2, "En mikään minkä tiedän");
+			Answer answer1_3 = new Answer(question1, "Jotain tosi hienoo bro");
 
 			surveyRepository.save(survey1);
 
@@ -42,6 +43,7 @@ public class SurveysystemApplication {
 			
 			answerRepository.save(answer1);
 			answerRepository.save(answer1_2);
+			answerRepository.save(answer1_3);
 
 			// kys 2
 			Survey survey2 = new Survey("Survey2", "Survey description");
