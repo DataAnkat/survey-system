@@ -97,14 +97,17 @@ public class SurveyController {
         return "deleteSurvey";
     }
 
+
+    // vastaukset pitää kaikki poistaa jokaisesta kysymyksestä
+
     @PostMapping("/deleteSurvey/{id}")
     @Transactional 
     public String deleteSurvey(@PathVariable("id") Long id) {
 
-        List<Answer> answers = answerRepository.findByQuestionId(id);
+        Answer answer = answerRepository.findByQuestionId(id);
         List<Question> questions = questionRepository.findBySurveyId(id);
 
-        answerRepository.deleteAll(answers);
+        answerRepository.delete(answer);
         questionRepository.deleteAll(questions);
         surveyRepository.deleteById(id);
         return "redirect:/surveyList";
@@ -115,10 +118,12 @@ public class SurveyController {
         return "redirect:/surveyList";
     }
 
+    // vastaukset pitää kaikki poistaa jokaisesta kysymyksestä
+
     @PostMapping("/deleteQuestion/{surveyId}/{questionId}")
     @Transactional
     public String deleteQuestion(@PathVariable("surveyId") Long surveyId, @PathVariable("questionId") Long questionId) {
-        answerRepository.deleteAll(answerRepository.findByQuestionId(questionId));
+        answerRepository.delete(answerRepository.findByQuestionId(questionId));
         questionRepository.deleteById(questionId);
         return "redirect:/editSurvey/" + surveyId;
     }

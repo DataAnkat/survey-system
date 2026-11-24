@@ -31,13 +31,17 @@ public class SurveysystemApplication {
 
 			Question question1 = new Question("Mikä nimesi on?", survey1, null);
 			Question question1_2 = new Question("Mikä?", survey1, null);
+			
+			Answer answer1 = new Answer(question1, "En tiiä mikä");
+			Answer answer1_2 = new Answer(question1_2, "En mikään minkä tiedän");
 
 			surveyRepository.save(survey1);
-			questionRepository.save(question1_2);
-			questionRepository.save(question1);
 
-			Answer answer1 = new Answer("En tiiä mikä");
+			questionRepository.save(question1);
+			questionRepository.save(question1_2);
+			
 			answerRepository.save(answer1);
+			answerRepository.save(answer1_2);
 
 			// kys 2
 			Survey survey2 = new Survey("Survey2", "Survey description");

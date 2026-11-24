@@ -38,17 +38,17 @@ public class AnswerRestController {
         this.questionRepository = questionRepository;;
     }
 
-    @PostMapping("/api/answer/{id}") //Tallennus, joka ei kuulema toimi t. TK
-    public String addAnswer (@PathVariable Long id, @RequestBody String answer) {
+    // @PostMapping("/api/answer/{id}") //Tallennus, joka ei kuulema toimi t. TK
+    // public String addAnswer (@PathVariable Long id, @RequestBody String answer) {
 
-        Question _question = questionRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found"));
+    //     Question _question = questionRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found"));
 
-        Answer newAnswer = new Answer(_question, answer);
+    //     Answer newAnswer = new Answer(_question, answer);
 
-        answerRepository.save(newAnswer);
+    //     answerRepository.save(newAnswer);
 
-        return "Answer id: " + id + "Added to repo";
-    }
+    //     return "Answer id: " + id + "Added to repo";
+    // }
 
     @GetMapping("/api/answers")
     public List<Answer> getAnswersBySurvey() {
@@ -56,10 +56,9 @@ public class AnswerRestController {
     }
     
 
-    @GetMapping("/api/answers/{id}")
-    public Optional<Answer> getAnswerById(@PathVariable("id") Long id) {
-
-        return answerRepository.findById(id);
+    @RequestMapping("/api/answer/{id}")
+    public Answer getAnswerById(@PathVariable("id") Long id) {
+        return answerRepository.findByQuestionId(id);
     }
 
 
