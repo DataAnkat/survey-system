@@ -50,10 +50,19 @@ public class AnswerRestController {
         return "Answer id: " + id + "Added to repo";
     }
 
-    @GetMapping("/api/answers/{id}")
-    public String getAnswersById() {
-        return new String();
+    @GetMapping("/api/answers")
+    public List<Answer> getAnswersBySurvey() {
+        return answerRepository.findAll();
     }
+    
+
+    @GetMapping("/api/answers/{id}")
+    public Optional<Answer> getAnswerById(@PathVariable("id") Long id) {
+
+        return answerRepository.findById(id);
+    }
+
+
     
 
     

@@ -21,7 +21,7 @@ public class Answer {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private Question question; // muuta -> Question
+    private Question question; 
 
     private Type type;
     private String answer;
@@ -32,6 +32,10 @@ public class Answer {
 
     public Answer(Question question, String answer){
         this.question = question;
+        this.answer = answer;
+    }
+
+    public Answer(String answer){
         this.answer = answer;
     }
 

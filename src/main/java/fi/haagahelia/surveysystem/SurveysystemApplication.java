@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import fi.haagahelia.surveysystem.domain.Answer;
 import fi.haagahelia.surveysystem.domain.AnswerRepository;
 import fi.haagahelia.surveysystem.domain.Question;
 import fi.haagahelia.surveysystem.domain.QuestionRepository;
@@ -35,12 +36,18 @@ public class SurveysystemApplication {
 			questionRepository.save(question1_2);
 			questionRepository.save(question1);
 
+			Answer answer1 = new Answer("En tiiä mikä");
+			answerRepository.save(answer1);
+
 			// kys 2
 			Survey survey2 = new Survey("Survey2", "Survey description");
 			Question question2 = new Question("Mikä päivä on?", survey2, null);
 
 			surveyRepository.save(survey2);
 			questionRepository.save(question2);
+
+			Answer answer2 = new Answer("En tiiä mikä mahtaa ollaaa");
+			answerRepository.save(answer2);
 
 			// kys 3
 			Survey survey3 = new Survey("Palautekysely", "Tämä kysely on kohdistettu Haaga-Helian opisikelijoille. Palautetta pyydetään opettajien toimintavoista kurssien aikana ja toivotaan, että opiskelijat ilmiantavat epäoikeudenmukaisen käytöksen, mikäli sellaista havaitaan. Palautteet kerätään, jotta voidaan ottaa tarpeenmukaiset toimenpiteet käyttöön opettajan toimintatapojen parantamiseksi.");

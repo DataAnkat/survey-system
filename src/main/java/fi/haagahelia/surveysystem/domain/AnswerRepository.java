@@ -10,4 +10,5 @@ public interface AnswerRepository extends CrudRepository<Answer, Long> {
     // or, if you only have the id:
     List<Answer> findByQuestionId(Long surveyId);
     
+    List <Answer> findAll();
 } 
