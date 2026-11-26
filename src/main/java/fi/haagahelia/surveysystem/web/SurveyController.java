@@ -104,10 +104,10 @@ public class SurveyController {
     @Transactional 
     public String deleteSurvey(@PathVariable("id") Long id) {
 
-        Answer answer = answerRepository.findByQuestionId(id);
+        List<Answer> answer = answerRepository.findByQuestionId(id);
         List<Question> questions = questionRepository.findBySurveyId(id);
 
-        answerRepository.delete(answer);
+        answerRepository.deleteAll(answer);
         questionRepository.deleteAll(questions);
         surveyRepository.deleteById(id);
         return "redirect:/surveyList";
@@ -123,7 +123,7 @@ public class SurveyController {
     @PostMapping("/deleteQuestion/{surveyId}/{questionId}")
     @Transactional
     public String deleteQuestion(@PathVariable("surveyId") Long surveyId, @PathVariable("questionId") Long questionId) {
-        answerRepository.delete(answerRepository.findByQuestionId(questionId));
+        answerRepository.deleteAll(answerRepository.findByQuestionId(questionId));
         questionRepository.deleteById(questionId);
         return "redirect:/editSurvey/" + surveyId;
     }

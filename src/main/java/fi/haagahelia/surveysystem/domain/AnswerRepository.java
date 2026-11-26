@@ -2,13 +2,12 @@ package fi.haagahelia.surveysystem.domain;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.ListCrudRepository;
 
-public interface AnswerRepository extends CrudRepository<Answer, Long> {
+// ListCrudRepository returns List (instead of Iterable) from findAll, saveAll, etc.
+public interface AnswerRepository extends ListCrudRepository<Answer, Long> {
 
     List<Answer> findByQuestion(Question question);
     // or, if you only have the id:
-    Answer findByQuestionId(Long questionId);
-    
-    List <Answer> findAll();
-} 
+    List<Answer> findByQuestionId(Long questionId);
+}

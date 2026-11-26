@@ -38,16 +38,9 @@ public class AnswerRestController {
         this.questionRepository = questionRepository;;
     }
 
-    @PostMapping("/api/answer/{id}") //Tallennus, joka ei kuulema toimi t. TK
-    public String saveAnswer (@PathVariable Long id, @RequestBody String answer) {
-
-        Question _question = questionRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found"));
-
-        Answer newAnswer = new Answer(_question, answer);
-
-        answerRepository.save(newAnswer);
-
-        return "Answer id: " + id + "Added to repo";
+    @PostMapping("/api/answers/save")
+    public List<Answer> saveAnswers(@RequestBody List<Answer> answers) {
+        return answerRepository.saveAll(answers);
     }
 
     @GetMapping("/api/answers")
@@ -58,7 +51,7 @@ public class AnswerRestController {
     // löydä kaikki vastaukset tällä tietyllä kysymys id:llä
     // useampi vastaus yhteen kysymykseen
     @RequestMapping("/api/answer/{id}")
-    public Answer getAnswerById(@PathVariable("id") Long id) {
+    public List<Answer> getAnswerById(@PathVariable("id") Long id) {
         return answerRepository.findByQuestionId(id);
     }
 
