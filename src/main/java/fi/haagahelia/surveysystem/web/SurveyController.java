@@ -135,6 +135,6 @@ public class SurveyController {
     // Home page of REST services
     @RequestMapping(value="/resthome", method = RequestMethod.GET)
     public String getRestHome() {    
-        return "/resthome";
+        return "resthome";
     }
 }
