@@ -131,4 +131,10 @@ public class SurveyController {
         questionRepository.deleteById(questionId);
         return "redirect:/editSurvey/" + surveyId;
     }
+
+    // Home page of REST services
+    @RequestMapping(value="/resthome", method = RequestMethod.GET)
+    public String getRestHome() {    
+        return "/resthome";
+    }
 }

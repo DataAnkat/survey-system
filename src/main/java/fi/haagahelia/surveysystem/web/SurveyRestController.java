@@ -46,9 +46,6 @@ public class SurveyRestController {
     public List<Question> requestMethodName(@PathVariable("id") Long questionId) {
         return questionRepository.findBySurveyId(questionId);
     }
-    
-
-    
 
 }
 

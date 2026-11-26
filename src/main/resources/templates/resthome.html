@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST Home Page</title>
+</head>
+
+<h1>REST home Page</h1>
+<h2> All Surveys</h2>
+
+<p>
+    <strong>Method:</strong>
+    GET
+
+    <strong>Endpoint:</strong>
+
+    <strong>
+        <a href="/api/surveys">/api/surveys</a>
+    </strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre>
+    <code>
+        [
+  {
+    "name": "Survey1",
+    "description": "Survey description",
+    "id": 1
+  },
+  {
+    "name": "Survey2",
+    "description": "Survey description",
+    "id": 2
+  },
+  {
+    "name": "Palautekysely",
+    "description": "Tämä kysely on kohdistettu Haaga-Helian opisikelijoille. Palautetta pyydetään opettajien toimintavoista kurssien aikana ja toivotaan, että opiskelijat ilmiantavat epäoikeudenmukaisen käytöksen, mikäli sellaista havaitaan. Palautteet kerätään, jotta voidaan ottaa tarpeenmukaiset toimenpiteet käyttöön opettajan toimintatapojen parantamiseksi.",
+    "id": 3
+  }
+]
+    </code>
+</pre>
+
+<h2>Surveys by ID</h2>
+
+<p>
+    <strong>Method:</strong>
+    GET
+
+    <strong>Endpoint:</strong>
+
+    <strong>
+        <a href="/api/survey/{id}">/api/survey/{id}</a>
+    </strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre>
+    <code>
+{
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/surveys/1"
+    },
+    "survey": {
+      "href": "http://localhost:8080/api/surveys/1"
+    }
+  },
+  "name": "Survey1",
+  "description": "Survey description"
+}
+    </code>
+</pre>
+
+<h2>Questions by ID</h2>
+
+<p>
+    <strong>Method:</strong>
+    GET
+
+    <strong>Endpoint:</strong>
+
+    <strong>
+        <a href="/api/questions/{id}">/api/questions/{id}</a>
+    </strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre>
+    <code>
+[
+  {
+    "question": "Onko tämä kolmas kysely?",
+    "survey": {
+      "name": "Palautekysely",
+      "description": "Tämä kysely on kohdistettu Haaga-Helian opisikelijoille. Palautetta pyydetään opettajien toimintavoista kurssien aikana ja toivotaan, että opiskelijat ilmiantavat epäoikeudenmukaisen käytöksen, mikäli sellaista havaitaan. Palautteet kerätään, jotta voidaan ottaa tarpeenmukaiset toimenpiteet käyttöön opettajan toimintatapojen parantamiseksi.",
+      "id": 3
+    },
+    "type": null,
+    "id": 4
+  }
+]
+    </code>
+</pre>
+
+<h2>All Answers</h2>
+
+<p>
+    <strong>Method:</strong>
+    GET
+
+    <strong>Endpoint:</strong>
+
+    <strong>
+        <a href="/api/answers">/api/answers</a>
+    </strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre>
+    <code>
+[
+  {
+    "answer": "En tiiä mikä",
+    "id": 1,
+    "question": {
+      "question": "Mikä nimesi on?",
+      "survey": {
+        "name": "Survey1",
+        "description": "Survey description",
+        "id": 1
+      },
+      "type": null,
+      "id": 1
+    },
+    "type": null
+  },
+  {
+    "answer": "En mikään minkä tiedän",
+    "id": 2,
+    "question": {
+      "question": "Mikä?",
+      "survey": {
+        "name": "Survey1",
+        "description": "Survey description",
+        "id": 1
+      },
+      "type": null,
+      "id": 2
+    },
+    "type": null
+  },
+  {
+    "answer": "Jotain tosi hienoo bro",
+    "id": 3,
+    "question": {
+      "question": "Mikä nimesi on?",
+      "survey": {
+        "name": "Survey1",
+        "description": "Survey description",
+        "id": 1
+      },
+      "type": null,
+      "id": 1
+    },
+    "type": null
+  },
+  {
+    "answer": "En tiiä mikä mahtaa ollaaa",
+    "id": 4,
+    "question": null,
+    "type": null
+  }
+]
+    </code>
+</pre>
+
+<h2>Answers by ID</h2>
+
+<p>
+    <strong>Method:</strong>
+    GET
+
+    <strong>Endpoint:</strong>
+
+    <strong>
+        <a href="/api/answer/{id}">/api/answer/{id}</a>
+    </strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre>
+    <code>
+{
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/answers/1"
+    },
+    "answer": {
+      "href": "http://localhost:8080/api/answers/1"
+    },
+    "question": {
+      "href": "http://localhost:8080/api/answers/1/question"
+    }
+  },
+  "answer": "En tiiä mikä",
+  "type": null
+}
+    </code>
+</pre>
+
+<h2>Save answer by ID</h2>
+
+<p>
+    <strong>Method:</strong>
+    POST
+
+    <strong>Endpoint:</strong>
+
+    <strong>
+        <a href="/api/answers/save">/api/answers/save</a>
+    </strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre>
+    <code>
+[
+  {
+    "answer": "Tämä on vastaus",
+    "id": 4
+  }
+]
+    </code>
+</pre>
+</html>
