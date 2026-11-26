@@ -58,10 +58,10 @@ public class SurveysystemApplication {
 			questionRepository.save(question2_3);
 			questionRepository.save(question2_4);
 
-			Answer answer2_1 = new Answer("Torstai 19.11.2026");
-			Answer answer2_2 = new Answer("Makaronilaatikko");
-			Answer answer2_3 = new Answer("Oli hyvää, mutta hieman mauton. Ketsupin kanssa oli oikein maistuvaa silti.");
-			Answer answer2_4 = new Answer("Jonain erikoispäivänä toivoisin pizzaa");
+			Answer answer2_1 = new Answer(question2_1, "Torstai 19.11.2026");
+			Answer answer2_2 = new Answer(question2_2, "Makaronilaatikko");
+			Answer answer2_3 = new Answer(question2_3, "Oli hyvää, mutta hieman mauton. Ketsupin kanssa oli oikein maistuvaa silti.");
+			Answer answer2_4 = new Answer(question2_4, "Jonain erikoispäivänä toivoisin pizzaa");
 
 			answerRepository.save(answer2_1);
 			answerRepository.save(answer2_2);
