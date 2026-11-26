@@ -51,14 +51,14 @@ public class SurveysystemApplication {
 			Question question2_2 = new Question("Mitä söit tänään?", survey2, null);
 			Question question2_3 = new Question("Mitä pidit tämän päivän annoksestasi?", survey2, null);
 			Question question2_4 = new Question("Millaista tai mitä ruokaa toivoisit meidän tarjoavan?", survey2, null);
-
+ 
 			surveyRepository.save(survey2);
 			questionRepository.save(question2_1);
 			questionRepository.save(question2_2);
 			questionRepository.save(question2_3);
 			questionRepository.save(question2_4);
 
-			Answer answer2_1 = new Answer("Torstai 26.11.2026");
+			Answer answer2_1 = new Answer("Torstai 19.11.2026");
 			Answer answer2_2 = new Answer("Makaronilaatikko");
 			Answer answer2_3 = new Answer("Oli hyvää, mutta hieman mauton. Ketsupin kanssa oli oikein maistuvaa silti.");
 			Answer answer2_4 = new Answer("Jonain erikoispäivänä toivoisin pizzaa");
