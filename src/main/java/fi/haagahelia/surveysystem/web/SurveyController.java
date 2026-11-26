@@ -107,7 +107,11 @@ public class SurveyController {
         List<Answer> answer = answerRepository.findByQuestionId(id);
         List<Question> questions = questionRepository.findBySurveyId(id);
 
-        answerRepository.deleteAll(answer);
+        
+         for (Question question : questions) {
+            answerRepository.deleteAll(answerRepository.findByQuestionId(question.getId()));
+        }
+
         questionRepository.deleteAll(questions);
         surveyRepository.deleteById(id);
         return "redirect:/surveyList";
@@ -127,7 +131,4 @@ public class SurveyController {
         questionRepository.deleteById(questionId);
         return "redirect:/editSurvey/" + surveyId;
     }
-
-    
-
 }
